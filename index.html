@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>hai</title>
+    </head>
+</html>
+<body>
+    <div id="header"></div>
+    <!-- <div id="root">
+    </div> -->
+    <div id="footer"></div>
+</body>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script>
+    const h = React.createElement("h1",{},"Hello");
+    const head = React.createElement("h2",{},"header");
+    // const r = ReactDOM.createRoot(document.getElementById("root"));
+    const foot = React.createElement("div",{id:footer},[h,head]);
+
+
+    // const footer = ReactDOM.createRoot(document.getElementById("header"));
+    const header = ReactDOM.createRoot(document.getElementById("header"));
+    // r.render(h);
+    // footer.render(head);
+    header.render(foot);
+
+</script>
