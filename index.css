@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid black;
+}
+.nav-items > ul {
+    list-style-type: none;
+    display: flex;
+
+}
+.nav-items > ul > li {
+   padding: 10px;
+
+}
+.logo {
+    width: 100px;
+}
+.body{
+
+}
+.footer {
+    bottom: 0px;
+    position: fixed;
+}
+.card{
+    padding: 5px;
+    border: 1px solid black;
+    width: 100px;
+}
+.food-card-img{
+width: 100%;
+}
+.restaraunt-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

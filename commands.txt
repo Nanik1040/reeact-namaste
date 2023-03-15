@@ -4,6 +4,6 @@ git commit -m "commit message"
 git push -u origin master
 
 parcel :
-npx parcel -D inex.html  //development
+npx parcel -D index.html  //development
 npx parcel build index.html //production
 npx parcel index.html --https  //run on https
