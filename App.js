@@ -1085,8 +1085,15 @@ const restarauntList = [
     subtype: "basic",
   },
 ];
-const RestarauntCard = (props) => {
-  console.log(props);
+const RestarauntCard = ({
+  name,
+  cuisines,
+  cloudinaryImageId,
+  lastMileTravelString,
+}) => {
+  console.log(restaraunt);
+  // const { name, cuisines, cloudinaryImageId, lastMileTravelString } =
+  //   restaraunt.data;
   return (
     <>
       <div className="card">
@@ -1095,12 +1102,12 @@ const RestarauntCard = (props) => {
           alt="burgerking logo"
           src={
             "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/" +
-            props.restaraunt.data?.cloudinaryImageId
+            cloudinaryImageId
           }
         ></img>
-        <h3>{props.restaraunt.data?.name}</h3>
-        <h6>{props.restaraunt.data?.cuisines.join(", ")}</h6>
-        <h6>{props.restaraunt.data?.lastMileTravelString} </h6>
+        <h3>{name}</h3>
+        <h6>{cuisines.join(", ")}</h6>
+        <h6>{lastMileTravelString} </h6>
       </div>
     </>
   );
@@ -1130,15 +1137,19 @@ const HeaderComponent = () => {
     </div>
   );
 };
+// no key(is not acceptable ) <<<<<<<<<<<<< index(use only if you don't have anything) << unique key(bext practice)
 const BodyComponent = () => {
   return (
     <div className="restaraunt-list">
-      <RestarauntCard restaraunt={restarauntList[0]} />
-      <RestarauntCard restaraunt={restarauntList[1]} />
-      <RestarauntCard restaraunt={restarauntList[2]} />
-      <RestarauntCard restaraunt={restarauntList[3]} />
-      <RestarauntCard restaraunt={restarauntList[4]} />
-      <RestarauntCard restaraunt={restarauntList[5]} />
+      {restarauntList.map((restaraunt) => {
+        return <RestarauntCard {...restaraunt.data} key={restaraunt.data.id} />;
+      })}
+      {/* <RestarauntCard {...restarauntList[0].data} />
+      <RestarauntCard {...restarauntList[1].data} />
+      <RestarauntCard {...restarauntList[2].data} />
+      <RestarauntCard {...restarauntList[3].data} />
+      <RestarauntCard {...restarauntList[4].data} />
+      <RestarauntCard {...restarauntList[5].data} /> */}
     </div>
   );
 };
