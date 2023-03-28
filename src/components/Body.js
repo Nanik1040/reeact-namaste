@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { restarauntList } from "../constants";
 import RestarauntCard from "./RestarauntCard";
 // no key(is not acceptable ) <<<<<<<<<<<<< index(use only if you don't have anything) << unique key(bext practice)
@@ -15,6 +15,22 @@ function filterData(searchText, restaraunts) {
 const BodyComponent = () => {
   const [restaraunts, setRestaraunts] = useState(restarauntList);
   const [searchText, setSearchText] = useState("");
+  //empty dependency array => once after render
+  //dependency array [searchtext] => once after initial render + every time after render (my search text changes)
+  useEffect(() => {
+    getRestaraunts();
+  }, []);
+
+  async function getRestaraunts() {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.430431798250495&lng=78.32553472369908&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    //optional chaining  ?
+    setRestaraunts(json?.data?.cards[2]?.data?.data?.cards);
+    console.log(json);
+  }
+  console.log("render");
   return (
     <>
       <div className="search-container">
