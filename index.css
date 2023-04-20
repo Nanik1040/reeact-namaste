@@ -4,35 +4,56 @@
     padding: 10px;
     border: 1px solid black;
 }
-.nav-items > ul {
+
+.nav-items>ul {
     list-style-type: none;
     display: flex;
 
 }
-.nav-items > ul > li {
-   padding: 10px;
+
+.nav-items>ul>li {
+    padding: 10px;
 
 }
+
 .logo {
     width: 100px;
 }
-.body{
 
-}
+.body {}
+
 .footer {
     bottom: 0px;
-    position: fixed;
+    position: relative;
 }
-.card{
+
+.card {
     padding: 5px;
     border: 1px solid black;
     width: 100px;
 }
-.food-card-img{
-width: 100%;
+
+.food-card-img {
+    width: 100%;
 }
-.restaraunt-list{
+
+.restaraunt-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+.shimmer-card {
+    width: 200px;
+    height: 200px;
+    background: lightgrey;
+    margin: 20px;
+    justify-content: space-between;
+}
+.res-details{
+    display: flex;
+}
+.item-image{
+    height: 150px;
+    width: 150px;
 }

@@ -5,8 +5,14 @@ import ReactDOM from "react-dom/client";
 import { HeaderComponent } from "./components/Header";
 import BodyComponent from "./components/Body";
 import FooterComponent from "./components/Footer";
+import About from "./components/About";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import Error from "./components/Error";
+import Contact from "./components/Contact";
+import RestarauntMenu from "./components/RestarauntMenu";
 
 /**
+ * 
  * header
  *   - logo
  *   - nav items(right side)
@@ -27,11 +33,40 @@ const AppLayout = () => {
   return (
     <>
       <HeaderComponent />
-      <BodyComponent />
+
+      <Outlet />
       <FooterComponent />
     </>
   );
 };
+const appRouter = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppLayout />,
+      errorElement: <Error />,
+      children: [
+        {
+          path: "/",
+          element: <BodyComponent />
+        },
+        {
+          path: "/about",
+          element: <About />
+        },
+        {
+          path: "/contact",
+          element: <Contact />
+        },
+        {
+          path:"/restaraunt/:id",
+          element:<RestarauntMenu/>
+        }
+      ]
+    }
+  ]
+)
+console.log("App rendered")
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //passing a react element inside the root
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);

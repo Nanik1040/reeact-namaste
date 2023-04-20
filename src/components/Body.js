@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { restarauntList } from "../constants";
 import RestarauntCard from "./RestarauntCard";
 import Shimmer from "./Shimmer";
+import {Link} from "react-router-dom";
 // no key(is not acceptable ) <<<<<<<<<<<<< index(use only if you don't have anything) << unique key(bext practice)
 
 function filterData(searchText, restaraunts) {
@@ -69,7 +70,11 @@ const BodyComponent = () => {
       <div className="restaraunt-list">
         {restaraunts.map((restaraunt) => {
           return (
-            <RestarauntCard {...restaraunt.data} key={restaraunt.data.id} />
+            <Link to={"/restaraunt/" + restaraunt.data.id}
+            key={restaraunt.data.id}
+            >
+            <RestarauntCard {...restaraunt?.data} key={restaraunt?.data?.id} />
+            </Link>
           );
         })}
         {/* <RestarauntCard {...restarauntList[0].data} />
