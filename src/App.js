@@ -10,6 +10,8 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestarauntMenu from "./components/RestarauntMenu";
+// import Profile from "./components/Profile";
+import Profile from "./components/ProfileClass"
 
 /**
  * 
@@ -52,7 +54,13 @@ const appRouter = createBrowserRouter(
         },
         {
           path: "/about",
-          element: <About />
+          element: <About />,
+          children : [
+            {
+              path:"profile", // if you give / , then it will it take it as localhost:1234/profile . we need this as children right so thats why we haven't added that
+              element:<Profile/> // and if we are creating childrwn , we need to give outlet in parent , ex: chechk app.js we will hav eoutlet there .. instead of outlet you can directly add comp name also ex. <Profile/> check it in about.js
+            }
+          ]
         },
         {
           path: "/contact",
@@ -66,7 +74,7 @@ const appRouter = createBrowserRouter(
     }
   ]
 )
-console.log("App rendered")
+// console.log("App rendered")
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //passing a react element inside the root
 root.render(<RouterProvider router={appRouter} />);
