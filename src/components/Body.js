@@ -3,6 +3,7 @@ import { restarauntList } from "../constants";
 import RestarauntCard from "./RestarauntCard";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
+import useOnline from "./common/useOnline";
 // no key(is not acceptable ) <<<<<<<<<<<<< index(use only if you don't have anything) << unique key(bext practice)
 
 function filterData(searchText, restaraunts) {
@@ -23,7 +24,10 @@ const BodyComponent = () => {
   useEffect(() => {
     getRestaraunts();
   }, []);
-
+  // const isOnline = useOnline();
+  // if(!isOnline){
+  //   return <><h1>offline , please check your network connection</h1></>
+  // }
   async function getRestaraunts() {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.430431798250495&lng=78.32553472369908&page_type=DESKTOP_WEB_LISTING"

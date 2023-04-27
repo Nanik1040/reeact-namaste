@@ -4,8 +4,13 @@ const Profile = (props) => {
     const[count2,setCount2]=useState(1);
     useEffect(()=>{
         //API Call
+        return()=>{
+              //it will call when we are leaving the page
+        }
          console.log("use effect")
-    })
+    },[]  // //it will execute when we are updating state or props or force update()
+    //if we are going to update the every time (timer or cricket live score ) , this function will be called by every subsequent render
+    )
      console.log("render then useeffect")
     return (
         <>

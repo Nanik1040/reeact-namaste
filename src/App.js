@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 //default imoport
 import ReactDOM from "react-dom/client";
 //named import
@@ -11,8 +11,13 @@ import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestarauntMenu from "./components/RestarauntMenu";
 // import Profile from "./components/Profile";
-import Profile from "./components/ProfileClass"
+// import Profile from "./components/ProfileClass"
+import Shimmer from "./components/Shimmer";
+// import Instamart from "./components/Instamart";
+const Instamart = lazy(() => import("./components/Instamart"))
+const Profile = lazy(() => import("./components/ProfileClass"))
 
+//always use dynamic  loading below the imports only , good practice
 /**
  * 
  * header
@@ -30,6 +35,14 @@ import Profile from "./components/ProfileClass"
  *  Footer
  *    - copyright
  */
+
+//chunking
+//code splitting
+//dynamic bundling
+//lazy loading
+//on demand loadinf
+//dynamic import
+//when we are trying to load dynamically(on demand) it supspends (first time)
 
 const AppLayout = () => {
   return (
@@ -58,7 +71,7 @@ const appRouter = createBrowserRouter(
           children : [
             {
               path:"profile", // if you give / , then it will it take it as localhost:1234/profile . we need this as children right so thats why we haven't added that
-              element:<Profile/> // and if we are creating childrwn , we need to give outlet in parent , ex: chechk app.js we will hav eoutlet there .. instead of outlet you can directly add comp name also ex. <Profile/> check it in about.js
+              element: <Suspense><Profile /></Suspense> // and if we are creating childrwn , we need to give outlet in parent , ex: chechk app.js we will hav eoutlet there .. instead of outlet you can directly add comp name also ex. <Profile/> check it in about.js
             }
           ]
         },
@@ -69,6 +82,12 @@ const appRouter = createBrowserRouter(
         {
           path:"/restaraunt/:id",
           element:<RestarauntMenu/>
+        },
+        {
+          path: "/instamart",
+          //we are using suspense because(while loading first time we dont have the code for instamart) so thats why we suspend the react till the bundle load
+          //so we are supsending the react till the bundle load right , mean time we are loading the shimmer using fallback
+          element: <Suspense fallback={<Shimmer />}><Instamart /></Suspense>
         }
       ]
     }

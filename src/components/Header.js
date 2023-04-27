@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import useOnline from "./common/useOnline";
 const loggedInUser = () => {
   // API call to check authentication
   return false;
@@ -15,6 +16,7 @@ const Logo = () => (
 );
 
 export const HeaderComponent = () => {
+  const isOnline = useOnline();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <div className="header" style={{ backgroundColor: "white" }}>
@@ -24,9 +26,11 @@ export const HeaderComponent = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="about">About</Link></li>
           <li><Link to="contact">Contact</Link></li>
+          <li><Link to="instamart">Instamart</Link></li>
           <li>Cart</li>
         </ul>
       </div>
+      <h1>{isOnline ? "Online 🟢 " : "Offline 🔴"}</h1>
       {
         isLoggedIn ? (
           <button onClick={() => setIsLoggedIn(false)}>Logout</button>

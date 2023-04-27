@@ -29,15 +29,22 @@ async componentDidMount(){
     console.log(" child - componentidimount")
 }
 componentDidMount(){
+    //it will call only once and it's the first call
     this.timer = setInterval(()=>{
         console.log("naveen")
     },1000)
 }
+componentDidUpdate(){
+    //it will execute when we are updating state or props or force update()
+    //if we are going to update the every time (timer or cricket live score ) , this function will be called by every subsequent render
+}
 componentWillUnmount(){
+    //it will call when we are leaving the page
     console.log("clearing")
     clearInterval(this.timer);
 }
 render() {
+// it's the second call
     console.log(" child render")
     const {count} = this.state; // destructirizing or else we need to use it like this.state.count
 return <>
