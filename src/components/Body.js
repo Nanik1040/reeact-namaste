@@ -5,7 +5,12 @@ import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 import useOnline from "./common/useOnline";
 // no key(is not acceptable ) <<<<<<<<<<<<< index(use only if you don't have anything) << unique key(bext practice)
-
+/* Tailwind css
+-css on the go
+-reusability
+-less bundle size
+-flexible(customizable)
+*/
 function filterData(searchText, restaraunts) {
   console.log(searchText);
   console.log(restaraunts);
@@ -47,10 +52,11 @@ const BodyComponent = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+        <div className="search-container bg-pink-50 h-14 pl-5 pt-4">
+          {/* <h1 className="font-bold">Hello</h1> */}
         <input
           type="text"
-          className="search-input"
+            className="search-input bg-white pr-4"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
@@ -59,7 +65,8 @@ const BodyComponent = () => {
           }}
         />
         <button
-          className="search-btn"
+
+            className="search-btn bg-purple-400 "
           onClick={() => {
             console.log("clicked");
             //need to filter the data
@@ -71,7 +78,7 @@ const BodyComponent = () => {
           Search
         </button>
       </div>
-      <div className="restaraunt-list">
+        <div className="restaraunt-list flex flex-wrap">
         {restaraunts.map((restaraunt) => {
           return (
             <Link to={"/restaraunt/" + restaraunt.data.id}

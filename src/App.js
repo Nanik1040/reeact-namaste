@@ -48,7 +48,6 @@ const AppLayout = () => {
   return (
     <>
       <HeaderComponent />
-
       <Outlet />
       <FooterComponent />
     </>

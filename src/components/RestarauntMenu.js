@@ -30,8 +30,8 @@ return !resRestarauntObj.resInfo ? <Shimmer/> : (
         <h1>Restaraunt details : {id}</h1>
         {/* <h2>{resInfo?.cards[0]?.card?.card?.info.name}</h2> */}
         <h2>{resRestarauntObj.resInfo.name}</h2>
-        <span>
-        <img  className="item-image" src={IMG_CDN_URL + resRestarauntObj.resInfo.cloudinaryImageId}></img>
+                <span className="h-1 w-6" >
+                    <img className="item-image h-1" src={IMG_CDN_URL + resRestarauntObj.resInfo.cloudinaryImageId}></img>
         </span>
         <h2>{resRestarauntObj.resInfo.areaName}</h2>
         <h2>{resRestarauntObj.resInfo.avgRating}</h2>
